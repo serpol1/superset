@@ -368,8 +368,8 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             category_label=__("Security"),
             icon="fa-list-ol",
             menu_cond=lambda: (
-                self.config["FAB_ADD_SECURITY_VIEWS"]
-                and self.config["SUPERSET_LOG_VIEW"]
+                    self.config["FAB_ADD_SECURITY_VIEWS"]
+                    and self.config["SUPERSET_LOG_VIEW"]
             ),
         )
         appbuilder.add_api(SecurityRestApi)
@@ -446,9 +446,9 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 
         if self.config["SECRET_KEY"] == CHANGE_ME_SECRET_KEY:
             if (
-                self.superset_app.debug
-                or self.superset_app.config["TESTING"]
-                or is_test()
+                    self.superset_app.debug
+                    or self.superset_app.config["TESTING"]
+                    or is_test()
             ):
                 logger.warning("Debug mode identified with default secret key")
                 log_default_secret_key_warning()
@@ -553,11 +553,6 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         self.superset_app.url_map.converters["object_type"] = ObjectTypeConverter
 
     def configure_middlewares(self) -> None:
-        if self.config["ENABLE_CORS"]:
-            # pylint: disable=import-outside-toplevel
-            from flask_cors import CORS
-
-            CORS(self.superset_app, **self.config["CORS_OPTIONS"])
 
         if self.config["ENABLE_PROXY_FIX"]:
             self.superset_app.wsgi_app = ProxyFix(
@@ -571,7 +566,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
                     self.app = app
 
                 def __call__(
-                    self, environ: dict[str, Any], start_response: Callable[..., Any]
+                        self, environ: dict[str, Any], start_response: Callable[..., Any]
                 ) -> Any:
                     # Setting wsgi.input_terminated tells werkzeug.wsgi to ignore
                     # content-length and read the stream till the end.
@@ -604,13 +599,13 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 
         show_csp_warning = False
         if (
-            csp_warning
-            and not self.superset_app.debug
-            and (
+                csp_warning
+                and not self.superset_app.debug
+                and (
                 not talisman_enabled
                 or not talisman_config
                 or not talisman_config.get("content_security_policy")
-            )
+        )
         ):
             show_csp_warning = True
 

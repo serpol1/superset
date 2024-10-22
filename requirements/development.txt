@@ -35,8 +35,6 @@ dill==0.3.6
 et-xmlfile==1.1.0
     # via openpyxl
 executing==1.2.0
-    # via stack-data
-flask-cors==3.0.10
     # via apache-superset
 future==0.18.3
     # via pyhive
