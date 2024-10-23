@@ -24,7 +24,7 @@ from typing import Any, Callable, TYPE_CHECKING
 
 import wtforms_json
 from deprecation import deprecated
-from flask import Flask, redirect
+from flask import Flask, redirect, make_response
 from flask_appbuilder import expose, IndexView
 from flask_babel import gettext as __
 from flask_compress import Compress
@@ -665,5 +665,9 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 
 class SupersetIndexView(IndexView):
     @expose("/")
-    def index(self) -> FlaskResponse:
-        return redirect("/superset/welcome/")
+    def home(self) -> FlaskResponse:
+        return make_response('', 404)
+
+    @expose("/login")
+    def login(self) -> FlaskResponse:
+        return make_response('', 404)
