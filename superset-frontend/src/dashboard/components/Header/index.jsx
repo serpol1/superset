@@ -466,10 +466,9 @@ class Header extends React.PureComponent {
       logEvent,
     } = this.props;
 
-    const userCanEdit =
-      dashboardInfo.dash_edit_perm && !dashboardInfo.is_managed_externally;
-    const userCanShare = dashboardInfo.dash_share_perm;
-    const userCanSaveAs = dashboardInfo.dash_save_perm;
+    const userCanEdit = false;
+    const userCanShare = false;
+    const userCanSaveAs = false;
     const userCanCurate =
       isFeatureEnabled(FeatureFlag.EmbeddedSuperset) &&
       findPermission('can_set_embedded', 'Dashboard', user.roles);

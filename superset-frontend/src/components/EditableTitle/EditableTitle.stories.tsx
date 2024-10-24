@@ -29,7 +29,7 @@ export const InteractiveEditableTitle = (props: EditableTitleProps) => (
 );
 
 InteractiveEditableTitle.args = {
-  canEdit: true,
+  canEdit: false,
   editing: false,
   emptyText: 'Empty text',
   multiLine: true,

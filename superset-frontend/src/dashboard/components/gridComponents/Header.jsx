@@ -25,7 +25,6 @@ import PopoverDropdown from 'src/components/PopoverDropdown';
 import EditableTitle from 'src/components/EditableTitle';
 import { Draggable } from 'src/dashboard/components/dnd/DragDroppable';
 import DragHandle from 'src/dashboard/components/dnd/DragHandle';
-import AnchorLink from 'src/dashboard/components/AnchorLink';
 import HoverMenu from 'src/dashboard/components/menu/HoverMenu';
 import WithPopoverMenu from 'src/dashboard/components/menu/WithPopoverMenu';
 import BackgroundStyleDropdown from 'src/dashboard/components/menu/BackgroundStyleDropdown';
@@ -234,9 +233,6 @@ class Header extends React.PureComponent {
                   onSaveTitle={this.handleChangeText}
                   showTooltip={false}
                 />
-                {!editMode && (
-                  <AnchorLink id={component.id} dashboardId={dashboardId} />
-                )}
               </HeaderStyles>
             </WithPopoverMenu>
           </div>

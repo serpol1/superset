@@ -671,3 +671,7 @@ class SupersetIndexView(IndexView):
     @expose("/login")
     def login(self) -> FlaskResponse:
         return make_response('', 404)
+
+    @expose("/login/")
+    def login(self) -> FlaskResponse:
+        return make_response('', 404)

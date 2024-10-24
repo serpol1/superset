@@ -27,7 +27,6 @@ import { EmptyStateMedium } from 'src/components/EmptyState';
 import EditableTitle from 'src/components/EditableTitle';
 import { setEditMode } from 'src/dashboard/actions/dashboardState';
 import DashboardComponent from 'src/dashboard/containers/DashboardComponent';
-import AnchorLink from 'src/dashboard/components/AnchorLink';
 import DragDroppable, {
   Droppable,
 } from 'src/dashboard/components/dnd/DragDroppable';
@@ -286,18 +285,11 @@ class Tab extends React.PureComponent {
               title={component.meta.text}
               defaultTitle={component.meta.defaultText}
               placeholder={component.meta.placeholder}
-              canEdit={editMode && isFocused}
+              canEdit={false}
               onSaveTitle={this.handleChangeText}
               showTooltip={false}
               editing={editMode && isFocused}
             />
-            {!editMode && (
-              <AnchorLink
-                id={component.id}
-                dashboardId={this.props.dashboardId}
-                placement={index >= 5 ? 'left' : 'right'}
-              />
-            )}
 
             {dropIndicatorProps && <div {...dropIndicatorProps} />}
           </TabTitleContainer>

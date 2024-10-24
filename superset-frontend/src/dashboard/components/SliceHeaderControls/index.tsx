@@ -24,7 +24,6 @@ import React, {
   useCallback,
 } from 'react';
 import {
-  Link,
   RouteComponentProps,
   useHistory,
   withRouter,
@@ -44,10 +43,7 @@ import {
 import { useSelector } from 'react-redux';
 import { Menu } from 'src/components/Menu';
 import { NoAnimationDropdown } from 'src/components/Dropdown';
-import ShareMenuItems from 'src/dashboard/components/menu/ShareMenuItems';
 import downloadAsImage from 'src/utils/downloadAsImage';
-import { getSliceHeaderTooltip } from 'src/dashboard/util/getSliceHeaderTooltip';
-import { Tooltip } from 'src/components/Tooltip';
 import Icons from 'src/components/Icons';
 import ModalTrigger from 'src/components/ModalTrigger';
 import Button from 'src/components/Button';
@@ -433,16 +429,6 @@ const SliceHeaderControls = (props: SliceHeaderControlsPropsWithRouter) => {
         </Menu.Item>
       )}
 
-      {canExplore && (
-        <Menu.Item key={MENU_KEYS.EXPLORE_CHART}>
-          <Link to={props.exploreUrl}>
-            <Tooltip title={getSliceHeaderTooltip(props.slice.slice_name)}>
-              {t('Edit chart')}
-            </Tooltip>
-          </Link>
-        </Menu.Item>
-      )}
-
       {canEditCrossFilters && (
         <>
           <Menu.Item key={MENU_KEYS.CROSS_FILTER_SCOPING}>
@@ -497,21 +483,6 @@ const SliceHeaderControls = (props: SliceHeaderControlsPropsWithRouter) => {
       )}
 
       {(slice.description || canExplore) && <Menu.Divider />}
-
-      {supersetCanShare && (
-        <Menu.SubMenu title={t('Share')}>
-          <ShareMenuItems
-            dashboardId={dashboardId}
-            dashboardComponentId={componentId}
-            copyMenuItemTitle={t('Copy permalink to clipboard')}
-            emailMenuItemTitle={t('Share chart by email')}
-            emailSubject={t('Superset chart')}
-            emailBody={t('Check out this chart: ')}
-            addSuccessToast={addSuccessToast}
-            addDangerToast={addDangerToast}
-          />
-        </Menu.SubMenu>
-      )}
 
       {props.supersetCanCSV && (
         <Menu.SubMenu title={t('Download')}>

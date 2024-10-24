@@ -22,7 +22,6 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { css } from '@superset-ui/core';
 import { LayoutItem, RootState } from 'src/dashboard/types';
-import AnchorLink from 'src/dashboard/components/AnchorLink';
 import Chart from 'src/dashboard/containers/Chart';
 import DeleteComponentButton from 'src/dashboard/components/DeleteComponentButton';
 import { Draggable } from 'src/dashboard/components/dnd/DragDroppable';
@@ -283,12 +282,6 @@ const ChartHolder: React.FC<ChartHolderProps> = ({
               outlinedComponentId ? 'fade-in' : 'fade-out',
             )}
           >
-            {!editMode && (
-              <AnchorLink
-                id={component.id}
-                scrollIntoView={outlinedComponentId === component.id}
-              />
-            )}
             {!!outlinedComponentId && (
               <style>
                 {`label[for=${outlinedColumnName}] + .Select .Select__control {
